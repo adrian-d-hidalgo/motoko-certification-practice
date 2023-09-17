@@ -1,18 +1,18 @@
-import React from "react"
-import logo from "./assets/dfinity.svg"
+import React from "react";
+import logo from "./assets/dfinity.svg";
 
-import { createClient } from "@connect2ic/core"
-import { InternetIdentity } from "@connect2ic/core/providers/internet-identity"
+import { createClient } from "@connect2ic/core";
+import { InternetIdentity } from "@connect2ic/core/providers/internet-identity";
 import {
   ConnectButton,
   ConnectDialog,
   Connect2ICProvider,
-} from "@connect2ic/react"
-import "@connect2ic/core/style.css"
+} from "@connect2ic/react";
+import "@connect2ic/core/style.css";
 
 //Import canister definitions like this:
-import * as test from "../src/declarations/test"
-import { IcpTest } from "./components/Test"
+import * as certificate from "../src/declarations/certificate";
+import { IcpCertificate } from "./components/Certificate";
 
 function App() {
   return (
@@ -24,19 +24,19 @@ function App() {
         </div>
       </header>
       <ConnectDialog />
-      <IcpTest />
+      <IcpCertificate />
     </div>
-  )
+  );
 }
 
 const client = createClient({
   canisters: {
-    test,
+    certificate,
   },
   providers: [
     new InternetIdentity({
       providerUrl:
-        "http://127.0.0.1:8000/?canisterId=bw4dl-smaaa-aaaaa-qaacq-cai",
+        "http://127.0.0.1:8000/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai",
     }),
   ],
   globalProviderConfig: {
@@ -46,10 +46,10 @@ const client = createClient({
      */
     dev: true,
   },
-})
+});
 
 export default () => (
   <Connect2ICProvider client={client}>
     <App />
   </Connect2ICProvider>
-)
+);
