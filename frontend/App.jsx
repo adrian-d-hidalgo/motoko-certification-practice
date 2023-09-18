@@ -12,7 +12,7 @@ import "@connect2ic/core/style.css";
 
 //Import canister definitions like this:
 import * as certificate from "../src/declarations/certificate";
-import { IcpCertificate } from "./components/Certificate";
+import { CertificatePage } from "./components/certificate/CertificatePage";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
         </div>
       </header>
       <ConnectDialog />
-      <IcpCertificate />
+      <CertificatePage />
     </div>
   );
 }

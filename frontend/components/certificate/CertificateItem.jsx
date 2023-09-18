@@ -3,18 +3,13 @@ import { useCanister } from "@connect2ic/react";
 
 import { arrayBufferToImgSrc } from "../utils/image";
 
-const ImageMaxWidth = 2048;
-
 const CertificateItem = (props) => {
   const { post, refresh } = props;
   const [social] = useCanister("social");
 
   const [loading, setLoading] = useState("");
-  // const [file, setFile] = useState(null);
   const [message, setMessage] = useState(post[1].message);
   const [visible, setVisible] = useState(false);
-
-  // const [update, setUpdate] = useState(false);
 
   const handleUpdate = async (event) => {
     event.preventDefault();
