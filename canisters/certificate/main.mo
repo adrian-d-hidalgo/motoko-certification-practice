@@ -31,7 +31,7 @@ actor Certificate {
             institution = institution;
         };
         certificateList.put(Nat32.toText(generateCertificateId()), certificate);
-        Debug.print("New post created! ID: " # Nat32.toText(certficateId));
+        Debug.print("New certificate created! ID: " # Nat32.toText(certficateId));
         return ();
     };
 
@@ -40,5 +40,10 @@ actor Certificate {
         let certificateArray : [(Text, Certificate)] = Iter.toArray(certificateIter);
 
         return certificateArray;
+    };
+
+    public query func getCertificate(id : Text) : async ?Certificate {
+        let certificate : ?Certificate = certificateList.get(id); // TODO: Return only one item and not an array
+        return certificate;
     };
 };

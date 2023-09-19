@@ -22,7 +22,6 @@ const CertificateForm = () => {
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col items-center border mt-4 border-gray-500 p-5 space-x-2 w-96">
           <div className="flex flex-col space-y-2 w-full">
-            <label htmlFor="message">Crea un certificado</label>
             <input
               id="student"
               placeholder="Estudiante"
