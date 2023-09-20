@@ -9,17 +9,14 @@ const CertificatePage = () => {
 
   return (
     <div className="flex items-center justify-center flex-col p-4 w-full">
-      <h1 className="h1 text-center border-b border-gray-500 pb-2">
+      {/* <h1 className="h1 text-center border-b border-gray-500 pb-2">
         Hi{" "}
         {principal ? principal : ", connect with Internet Identity to continue"}
         !
-      </h1>
+      </h1> */}
 
       {/* Create certificate section */}
       <div className="mt-4 space-y-2 w-96">
-        <h2 className="h2 font-bold text-xl text-start">
-          Registrar certificado
-        </h2>
         <CertificateForm />
       </div>
 

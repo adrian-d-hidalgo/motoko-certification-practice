@@ -18,46 +18,87 @@ const CertificateForm = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className="flex flex-col items-center border mt-4 border-gray-500 p-5 space-x-2 w-96">
-          <div className="flex flex-col space-y-2 w-full">
-            <input
-              id="student"
-              placeholder="Estudiante"
-              required
-              className="border border-gray-500 px-2"
-              type="text"
-            />
+    <form onSubmit={handleSubmit}>
+      <div class="space-y-12">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">
+          Registro de certificado
+        </h2>
 
-            <input
-              id="course"
-              placeholder="Curso"
-              required
-              className="border border-gray-500 px-2"
-              type="text"
-            />
-
-            <input
-              id="instution"
-              placeholder="Institución"
-              required
-              className="border border-gray-500 px-2"
-              type="text"
-            />
-
-            <button
-              type="submit"
-              className="w-full p-2 rounded-sm bg-gray-950 hover:bg-gray-900 text-white text-lg font-bold"
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+          <div class="sm:col-span-6">
+            <label
+              for="student"
+              class="block text-sm font-medium leading-6 text-gray-900"
             >
-              Crear
-            </button>
+              Estudiante
+            </label>
+            <div class="mt-2">
+              <input
+                type="text"
+                name="student"
+                id="student"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder
+                required
+              />
+            </div>
+          </div>
+
+          <div class="sm:col-span-6">
+            <label
+              for="course"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Curso
+            </label>
+            <div class="mt-2">
+              <input
+                type="text"
+                name="course"
+                id="course"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder
+                required
+              />
+            </div>
+          </div>
+
+          <div class="sm:col-span-6">
+            <label
+              for="instution"
+              class="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Institución
+            </label>
+            <div class="mt-2">
+              <input
+                type="text"
+                name="institution"
+                id="instution"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder
+                required
+              />
+            </div>
           </div>
         </div>
-      </form>
-
+      </div>
+      <div class="mt-6 flex items-center justify-end gap-x-6">
+        {/* <button
+            type="button"
+            class="text-sm font-semibold leading-6 text-gray-900"
+          >
+            Cancel
+          </button> */}
+        <button
+          type="submit"
+          class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Registrar
+        </button>
+      </div>
       <p className="mx-2">{loading}</p>
-    </div>
+    </form>
   );
 };
 
