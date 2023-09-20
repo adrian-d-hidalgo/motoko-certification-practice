@@ -22,7 +22,6 @@ const CertificatePage = () => {
 
       {/* Certificate section */}
       <div className="mt-4 space-y-2 w-96">
-        <h2 className="h2 font-bold text-xl text-start">Buscar certificado</h2>
         <FindCertificate />
       </div>
     </div>
