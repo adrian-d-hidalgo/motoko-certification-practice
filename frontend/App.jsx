@@ -36,7 +36,7 @@ const client = createClient({
   providers: [
     new InternetIdentity({
       providerUrl:
-        "http://127.0.0.1:8000/?canisterId=br5f7-7uaaa-aaaaa-qaaca-cai",
+        "http://127.0.0.1:8000/?canisterId=be2us-64aaa-aaaaa-qaabq-cai",
     }),
   ],
   globalProviderConfig: {

@@ -22,7 +22,7 @@ actor Certificate {
         return certficateId;
     };
 
-    public shared (msg) func createCertificate(student : Text, course : Text, institution : Text) {
+    public shared (msg) func createCertificate(student : Text, course : Text, institution : Text) : async Text {
         let user : Text = Principal.toText(msg.caller);
         let certificate = {
             creator = user;
@@ -30,9 +30,10 @@ actor Certificate {
             course = course;
             institution = institution;
         };
-        certificateList.put(Nat32.toText(generateCertificateId()), certificate);
-        Debug.print("New post created! ID: " # Nat32.toText(certficateId));
-        return ();
+        let certId : Text = Nat32.toText(generateCertificateId());
+        certificateList.put(certId, certificate);
+        Debug.print("New certificate created! ID: " # Nat32.toText(certficateId));
+        return certId;
     };
 
     public query func getCertificates() : async [(Text, Certificate)] {
@@ -40,5 +41,10 @@ actor Certificate {
         let certificateArray : [(Text, Certificate)] = Iter.toArray(certificateIter);
 
         return certificateArray;
+    };
+
+    public query func getCertificate(id : Text) : async ?Certificate {
+        let certificate : ?Certificate = certificateList.get(id); // TODO: Return only one item and not an array
+        return certificate;
     };
 };
