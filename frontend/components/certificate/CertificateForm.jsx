@@ -18,7 +18,7 @@ const CertificateForm = () => {
         e.target[2].value,
       );
       setLoading(false);
-      form.reset();
+      // form.reset(); //TODO: Fix this error
       alert("Certificado registrado con ID: " + response);
     } catch (error) {
       setLoading(false);
