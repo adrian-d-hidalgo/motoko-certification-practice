@@ -19,3 +19,8 @@ Run the following commands:
 > npm run serve
 
 ## Team
+
+## TODOs
+
+- Generate IDs with UUID
+- Use NFTs for Certificates

@@ -10,8 +10,12 @@ import {
 } from "@connect2ic/react";
 import "@connect2ic/core/style.css";
 
-//Import canister definitions like this:
+// Import canister definitions
 import * as certificate from "../src/declarations/certificate";
+import * as course from "../src/declarations/course";
+import * as organization from "../src/declarations/organization";
+
+// Pages
 import { CertificatePage } from "./components/certificate/CertificatePage";
 
 function App() {
@@ -32,6 +36,8 @@ function App() {
 const client = createClient({
   canisters: {
     certificate,
+    course,
+    organization,
   },
   providers: [
     new InternetIdentity({
