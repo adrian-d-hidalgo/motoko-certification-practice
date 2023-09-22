@@ -13,7 +13,7 @@ const FindCertificate = () => {
     const certificateId = event.target[0].value;
 
     try {
-      const certFound = await certificate.getCertificate(certificateId);
+      const certFound = await certificate.findById(certificateId);
       setCert(certFound[0]);
       setLoading(false);
     } catch (error) {

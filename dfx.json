@@ -1,7 +1,19 @@
 {
   "canisters": {
     "certificate": {
-      "main": "canisters/certificate/main.mo",
+      "main": "backend/canisters/certificate/main.mo",
+      "type": "motoko"
+    },
+    "course": {
+      "main": "backend/canisters/course/main.mo",
+      "type": "motoko"
+    },
+    "organization": {
+      "main": "backend/canisters/organization/main.mo",
+      "type": "motoko"
+    },
+    "student": {
+      "main": "backend/canisters/student/main.mo",
       "type": "motoko"
     },
     "internet_identity": {
@@ -15,7 +27,13 @@
       }
     },
     "assets": {
-      "dependencies": ["internet_identity", "certificate"],
+      "dependencies": [
+        "internet_identity",
+        "certificate",
+        "course",
+        "organization",
+        "student"
+      ],
       "frontend": {
         "entrypoint": "dist/index.html"
       },

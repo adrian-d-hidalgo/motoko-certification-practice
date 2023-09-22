@@ -1,10 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useCanister } from "@connect2ic/react";
 
 const CertificateForm = () => {
+  // Canisters
   const [certificate] = useCanister("certificate");
+  const [organization] = useCanister("organization");
+  const [course] = useCanister("course");
+
+  // States
   const [loading, setLoading] = useState(false);
+  const [organizations, setOrganizations] = useState([]);
+  const [courses, setCourses] = useState([]);
+
   let form = undefined;
+
+  useEffect(async () => {
+    const [allOrgs, allCourses] = await Promise.all([
+      organization.getAll(),
+      course.getAll(),
+    ]);
+    setOrganizations(allOrgs);
+    setCourses(allCourses);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,7 +29,7 @@ const CertificateForm = () => {
     setLoading(true);
 
     try {
-      const response = await certificate.createCertificate(
+      const response = await certificate.create(
         e.target[0].value,
         e.target[1].value,
         e.target[2].value,
@@ -60,31 +77,45 @@ const CertificateForm = () => {
               Curso
             </label>
             <div className="mt-2">
-              <input
-                type="text"
+              <select
                 name="course"
                 id="course"
+                data-te-select-init
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 :text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 required
-              />
+              >
+                <option>Selecciona un curso</option>
+                {courses.map((course) => (
+                  <option key={course[0]} value={course[1].name}>
+                    {course[1].name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
 
           <div className="sm:col-span-6">
             <label
-              htmlFor="instution"
+              htmlFor="organization"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Institución
+              Organización
             </label>
             <div className="mt-2">
-              <input
-                type="text"
-                name="institution"
-                id="instution"
+              <select
+                name="organization"
+                id="organization"
+                data-te-select-init
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 :text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 required
-              />
+              >
+                <option>Selecciona una organización</option>
+                {organizations.map((org) => (
+                  <option key={org[0]} value={org[1].name}>
+                    {org[1].name}
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
